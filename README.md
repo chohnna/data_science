@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 Below is a plot showing the relationship between Protein and Fat content in various dry dog foods:
 
-![Protein vs Fat Content](drydogfood.jpeg)
+![Protein vs Fat Content](data/drydogfood.jpeg)
 
 ## Prerequisites
 
