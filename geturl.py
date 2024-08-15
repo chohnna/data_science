@@ -12,9 +12,6 @@ data['Fat'] = pd.to_numeric(data['Fat'].str.replace('%', ''), errors='coerce')
 # Drop rows with any missing values in 'Protein' or 'Fat'
 data.dropna(subset=['Protein', 'Fat'], inplace=True)
 
-# Assume 'URL' is a column in your CSV that contains the hyperlink for each brand
-# If not, you will need to add this column to your data
-
 # Create a scatter plot using Plotly for interactive hover features
 fig = px.scatter(data, x='Protein', y='Fat', title='Protein vs Fat Content',
                  hover_data={'Brand': True, 'URL': True})  # Include URLs in hover data
