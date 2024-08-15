@@ -1,6 +1,11 @@
 # Kibble Nutritional Data Analyzer
 
-This project scrapes nutritional data (protein and fat content) from various kibble brands and visualizes it to help dog owners find the best fit for their pets. The data is collected from provided URLs and plotted to compare different kibbles based on their nutritional content.
+High-fat food can be particularly harmful to dogs, especially breeds like Schnauzers, which are prone to pancreatitis—an inflammation of the pancreas often triggered by a diet high in fat. If a dog consumes too much fat, the pancreas can become overworked and inflamed, leading to severe pain, vomiting, diarrhea, and potentially life-threatening complications. Monitoring fat intake is crucial to prevent these issues.
+
+Choosing kibbles with the right nutritional balance—low in fat and high in quality protein—can help prevent these health problems. Understanding the nutritional facts on dog food labels allows pet owners to make informed decisions. However, with so many brands and kibbles available, it can be challenging to consider all options.
+
+This simple project addresses that challenge by displaying the fat and protein contents in various kibbles, helping you choose the right one for your dog. It scrapes nutritional data (protein and fat content) from various kibble brands and visualizes it to help dog owners find the best fit for their pets. The data is collected from provided URLs and plotted to compare different kibbles based on their nutritional content.
+
 
 ## Visualization
 
