@@ -1,36 +1,32 @@
-import requests
-from bs4 import BeautifulSoup
+import pandas as pd
+import plotly.express as px
 
-# URL of the page to scrape
-url = 'https://www.dogfoodadvisor.com/dog-food-reviews/dry/all/'
+# Load the data
+file_path = '~/Desktop/data_science/nutritional_data.csv'
+data = pd.read_csv(file_path)
 
-def get_reviews_with_brand_names(url):
-    response = requests.get(url)
-    soup = BeautifulSoup(response.content, 'html.parser')
-    
-    # Find all links within the specified class
-    review_links = soup.find_all('div', class_='reviews-archive__review')
-    
-    # List to store brand names and URLs
-    brand_details = []
-    
-    # Extract brand name and URL from each 'a' tag
-    for link in review_links:
-        a_tag = link.find('a')
-        if a_tag and 'href' in a_tag.attrs:
-            # Extract the text (brand name and product name) and the URL
-            brand_name = a_tag.get_text(strip=True)
-            url = a_tag['href']
-            brand_details.append((brand_name, url))
-    
-    return brand_details
+# Convert protein and fat percentages to numeric values, ignoring errors for non-numeric data
+data['Protein'] = pd.to_numeric(data['Protein'].str.replace('%', ''), errors='coerce')
+data['Fat'] = pd.to_numeric(data['Fat'].str.replace('%', ''), errors='coerce')
 
-# Get the list of brand names and URLs
-reviews_with_brands = get_reviews_with_brand_names(url)
+# Drop rows with any missing values in 'Protein' or 'Fat'
+data.dropna(subset=['Protein', 'Fat'], inplace=True)
 
-# Save brand names and URLs to a text file
-with open('dog_food_brand_urls.txt', 'w') as file:
-    for brand_name, url in reviews_with_brands:
-        file.write(f"{brand_name} - {url}\n")
+# Assume 'URL' is a column in your CSV that contains the hyperlink for each brand
+# If not, you will need to add this column to your data
 
-print("Brand names and URLs have been saved to dog_food_brand_urls.txt")
+# Create a scatter plot using Plotly for interactive hover features
+fig = px.scatter(data, x='Protein', y='Fat', title='Protein vs Fat Content',
+                 hover_data={'Brand': True, 'URL': True})  # Include URLs in hover data
+
+# Update the trace for hover info to include clickable links
+fig.update_traces(marker=dict(size=10),
+                  hovertemplate='Brand: %{hovertext}<br>Protein: %{x}%<br>Fat: %{y}%<br><a href="%{customdata[1]}">More Info</a>',
+                  hovertext=data['Brand'],  # Display brand name on hover
+                  customdata=data[['Brand', 'URL']])  # Custom data for use in the hover template
+
+# Save the interactive plot to an HTML file
+fig.write_html('protein_vs_fat_scatter_plot.html')
+
+# Show the interactive figure
+fig.show()
