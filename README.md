@@ -11,12 +11,6 @@ Below is a plot showing the relationship between Protein and Fat content in vari
 
 ![Protein vs Fat Content](drydogfood.jpeg)
 
-## Features
-
-- **Web Scraping**: Extracts nutritional information from kibble brand websites.
-- **Data Visualization**: Creates interactive plots to compare protein and fat content across different brands.
-- **Interactive URLs**: Allows users to click on data points in the plot to open the corresponding kibble brand's website for more information.
-
 ## Prerequisites
 
 - Python 3.
