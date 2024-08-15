@@ -2,6 +2,12 @@
 
 This project scrapes nutritional data (protein and fat content) from various kibble brands and visualizes it to help dog owners find the best fit for their pets. The data is collected from provided URLs and plotted to compare different kibbles based on their nutritional content.
 
+## Visualization
+
+Below is a plot showing the relationship between Protein and Fat content in various dry dog foods:
+
+![Protein vs Fat Content](drydogfood.jpeg)
+
 ## Features
 
 - **Web Scraping**: Extracts nutritional information from kibble brand websites.
