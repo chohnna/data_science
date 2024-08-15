@@ -3,11 +3,11 @@ import pandas as pd
 import webbrowser
 
 # Load nutritional data from CSV
-file_path = '~/Desktop/data_science/nutritional_data.csv'
+file_path = '~/Desktop/dry_dogfood/nutritional_data.csv'
 data = pd.read_csv(file_path)
 
 # Load URLs from text file
-url_file_path = '~/Desktop/data_science/dog_food_brand_urls.txt'
+url_file_path = '~/Desktop/dry_dogfood/dog_food_brand_urls.txt'
 url_data = pd.read_csv(url_file_path, header=None, names=['Brand', 'URL'], delimiter=' - ')
 
 # Merge the nutritional data with the URLs based on the 'Brand'
